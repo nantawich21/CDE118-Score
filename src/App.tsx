@@ -145,7 +145,7 @@ export default function App() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    const term = searchTerm.trim();
+    const term = searchTerm.trim().replace(/-/g, '');
     if (!term) return;
 
     const student = studentsData.find((s) => s.id === term);
@@ -225,7 +225,7 @@ export default function App() {
             <input
               type="text"
               className="block w-full pl-11 pr-32 py-4 bg-white border border-[var(--color-zen-border)] rounded-full text-[var(--color-zen-text)] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-zen-matcha)] focus:border-transparent transition-shadow shadow-sm"
-              placeholder="กรอกรหัสนักศึกษา (เช่น 1-67-03-0630-5)"
+              placeholder="กรอกรหัสนักศึกษา โดยไม่ต้องใส่ -"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
